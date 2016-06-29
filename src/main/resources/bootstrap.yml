@@ -1,5 +1,6 @@
 spring:
   application:
+<<<<<<< HEAD
     name: foo
   profiles:
     active: development,mysql
@@ -8,3 +9,6 @@ spring:
       uri: http://localhost:${config.port:8888}
 #      label: myfeature,master
       label: myfeature
+=======
+    name: configserver
+>>>>>>> 33675dab28e6aa741203449133e29ffc22737771

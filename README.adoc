@@ -1,4 +1,4 @@
-# config-repo-foo
+# config-sample
 
 spring config 客户端示例
 
@@ -30,3 +30,5 @@ active: development,mysql 意味着对应配置库的foo-development.properties,foo-mysql
 ${config.port:8888} 用于指定配置服务器的端口，当没有配置环境变量也没加启动参数"-Dconfig.port=8080"时默认为8888
 
 label: myfeature 用于指定要使用配置库的哪个分支中的配置文件，建议此参数用于区分环境，如开发环境，测试环境，当此参数为空时其值默认为client当前的分支名称
+
+注意 {application} {profile} {label} 的用途基于服务器的配置不同而作用不同

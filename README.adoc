@@ -1,22 +1,32 @@
 # config-repo-foo
 
-spring config 配置库
+spring config 客户端示例
 
-=== 分支
-有两个分支，分别为 master及myfeature，通过 config client的 spring.cloud.config.label配置来指定使用哪个分支
-
-其中master分支对应生产环境的配置，myfeature分支对应开发环境的配置（仅供参考）
 
 === 相关示例项目
 https://github.com/hub830/spring-config-server-gradle[服务端示例]
 
-https://github.com/hub830/spring-config-sample-gradle[客户端示例]
+https://github.com/hub830/config-repo-foo[配置示例]
 
-=== 配置文件
-application.yml 默认的配置文件
+=== 配置项
 
-foo-development.properties 由config client 的spring.profiles.active:development 指定，foo为config client的项目名
+.application.yml
+----
+spring:
+  application:
+    name: foo
+  profiles:
+    active: development,mysql
+  cloud:
+    config:
+      uri: http://localhost:${config.port:8888}
+      label: myfeature
+----
 
-foo-mysql.properties 由config client 的spring.profiles.active:mysql 指定，foo为config client的项目名
+name: foo 意味着除开默认的application.yml外对应配置库的foo.properties也将被作为配置文件使用
 
-foo.properties  foo为config client的项目名
+active: development,mysql 意味着对应配置库的foo-development.properties,foo-mysql.properties将被客户端作为配置文件使用
+
+${config.port:8888} 用于指定配置服务器的端口，当没有配置环境变量也没加启动参数"-Dconfig.port=8080"时默认为8888
+
+label: myfeature 用于指定要使用配置库的哪个分支中的配置文件，建议此参数用于区分环境，如开发环境，测试环境，当此参数为空时其值默认为client当前的分支名称

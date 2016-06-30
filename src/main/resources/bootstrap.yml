@@ -8,3 +8,5 @@ spring:
       uri: http://localhost:${config.port:8888}
 #      label: myfeature,master
       label: myfeature
+      username: user
+#      password: 123456
